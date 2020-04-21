@@ -1,0 +1,12 @@
+[Unit]
+Description=Jitsi Meet stats to Graphite exporter
+After=jitsi-videobridge2.service
+
+[Service]
+Type=simple
+User=jvb
+Group=jitsi
+ExecStart=/usr/local/bin/jmstats.py
+
+[Install]
+WantedBy=multi-user.target
