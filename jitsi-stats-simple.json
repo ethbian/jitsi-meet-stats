@@ -7,6 +7,13 @@
       "type": "datasource",
       "pluginId": "graphite",
       "pluginName": "Graphite"
+    },
+    {
+      "name": "VAR_GRAPHITE_PREFIX",
+      "type": "constant",
+      "label": "graphite_prefix",
+      "value": "metrics.jitsi",
+      "description": ""
     }
   ],
   "__requires": [
@@ -15,12 +22,6 @@
       "id": "grafana",
       "name": "Grafana",
       "version": "6.7.1"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": ""
     },
     {
       "type": "datasource",
@@ -53,7 +54,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1587592106354,
+  "iteration": 1587676914076,
   "links": [],
   "panels": [
     {
@@ -114,7 +115,7 @@
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
         "lineColor": "rgb(31, 120, 193)",
-        "show": false,
+        "show": true,
         "ymax": null,
         "ymin": null
       },
@@ -122,7 +123,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.conferences"
+          "target": "$graphite_prefix.$jvbHost.conferences"
         }
       ],
       "thresholds": "",
@@ -199,7 +200,7 @@
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
         "lineColor": "rgb(31, 120, 193)",
-        "show": false,
+        "show": true,
         "ymax": null,
         "ymin": null
       },
@@ -207,7 +208,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.participants"
+          "target": "$graphite_prefix.$jvbHost.participants"
         }
       ],
       "thresholds": "",
@@ -292,7 +293,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.largest_conference"
+          "target": "$graphite_prefix.$jvbHost.largest_conference"
         }
       ],
       "thresholds": "",
@@ -377,7 +378,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.videostreams"
+          "target": "$graphite_prefix.$jvbHost.videostreams"
         }
       ],
       "thresholds": "",
@@ -462,7 +463,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.audiochannels"
+          "target": "$graphite_prefix.$jvbHost.audiochannels"
         }
       ],
       "thresholds": "",
@@ -548,7 +549,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.bit_rate_download"
+          "target": "$graphite_prefix.$jvbHost.bit_rate_download"
         }
       ],
       "thresholds": "",
@@ -633,7 +634,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.total_conferences_completed"
+          "target": "$graphite_prefix.$jvbHost.total_conferences_completed"
         }
       ],
       "thresholds": "",
@@ -718,7 +719,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.videochannels"
+          "target": "$graphite_prefix.$jvbHost.videochannels"
         }
       ],
       "thresholds": "",
@@ -804,7 +805,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.bit_rate_upload"
+          "target": "$graphite_prefix.$jvbHost.bit_rate_upload"
         }
       ],
       "thresholds": "",
@@ -889,7 +890,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.total_conference_seconds"
+          "target": "$graphite_prefix.$jvbHost.total_conference_seconds"
         }
       ],
       "thresholds": "",
@@ -974,7 +975,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.jitter_aggregate"
+          "target": "$graphite_prefix.$jvbHost.jitter_aggregate"
         }
       ],
       "thresholds": "",
@@ -1060,7 +1061,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.loss_rate_download"
+          "target": "$graphite_prefix.$jvbHost.loss_rate_download"
         }
       ],
       "thresholds": "",
@@ -1145,7 +1146,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.rtt_aggregate"
+          "target": "$graphite_prefix.$jvbHost.rtt_aggregate"
         }
       ],
       "thresholds": "",
@@ -1231,7 +1232,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.cpu_usage"
+          "target": "$graphite_prefix.$jvbHost.cpu_usage"
         }
       ],
       "thresholds": "",
@@ -1317,7 +1318,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.used_memory"
+          "target": "$graphite_prefix.$jvbHost.used_memory"
         }
       ],
       "thresholds": "",
@@ -1403,7 +1404,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.threads"
+          "target": "$graphite_prefix.$jvbHost.threads"
         }
       ],
       "thresholds": "",
@@ -1421,225 +1422,37 @@
         }
       ],
       "valueName": "current"
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_GRAPHITE}",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 10,
-        "w": 12,
-        "x": 0,
-        "y": 11
-      },
-      "hiddenSeries": false,
-      "id": 19,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.jitter_aggregate"
-        }
-      ],
-      "thresholds": [
-        {
-          "$$hashKey": "object:2911",
-          "colorMode": "warning",
-          "fill": false,
-          "line": true,
-          "op": "gt",
-          "value": 50,
-          "yaxis": "left"
-        },
-        {
-          "$$hashKey": "object:2917",
-          "colorMode": "critical",
-          "fill": false,
-          "line": true,
-          "op": "gt",
-          "value": 100,
-          "yaxis": "left"
-        }
-      ],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Jitter",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:2785",
-          "format": "ms",
-          "label": null,
-          "logBase": 1,
-          "max": "150",
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:2786",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "${DS_GRAPHITE}",
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 10,
-        "w": 12,
-        "x": 12,
-        "y": 11
-      },
-      "hiddenSeries": false,
-      "id": 20,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": false,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 2,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "refId": "A",
-          "target": "metrics.jitsi.$jvbHost.loss_rate_download"
-        }
-      ],
-      "thresholds": [
-        {
-          "$$hashKey": "object:2911",
-          "colorMode": "critical",
-          "fill": false,
-          "line": true,
-          "op": "gt",
-          "value": 0.01,
-          "yaxis": "left"
-        }
-      ],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Loss rate",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "$$hashKey": "object:2785",
-          "decimals": 2,
-          "format": "percentunit",
-          "label": null,
-          "logBase": 1,
-          "max": "0.02",
-          "min": "0",
-          "show": true
-        },
-        {
-          "$$hashKey": "object:2786",
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
     }
   ],
-  "refresh": "10s",
+  "refresh": "5s",
   "schemaVersion": 22,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
+        "current": {
+          "value": "${VAR_GRAPHITE_PREFIX}",
+          "text": "${VAR_GRAPHITE_PREFIX}"
+        },
+        "hide": 2,
+        "label": null,
+        "name": "graphite_prefix",
+        "options": [
+          {
+            "value": "${VAR_GRAPHITE_PREFIX}",
+            "text": "${VAR_GRAPHITE_PREFIX}"
+          }
+        ],
+        "query": "${VAR_GRAPHITE_PREFIX}",
+        "skipUrlSync": false,
+        "type": "constant"
+      },
+      {
         "allValue": null,
         "current": {},
         "datasource": "${DS_GRAPHITE}",
-        "definition": "metrics.jitsi.*",
+        "definition": "$graphite_prefix.*",
         "hide": 0,
         "includeAll": false,
         "index": -1,
@@ -1647,7 +1460,7 @@
         "multi": false,
         "name": "jvbHost",
         "options": [],
-        "query": "metrics.jitsi.*",
+        "query": "$graphite_prefix.*",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
@@ -1679,10 +1492,10 @@
     ]
   },
   "timezone": "",
-  "title": "Jitsi stats",
+  "title": "jitsi-stats-simple",
   "uid": "GDFgscqZz",
   "variables": {
     "list": []
   },
-  "version": 17
+  "version": 24
 }

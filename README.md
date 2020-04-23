@@ -1,5 +1,5 @@
 # jitsi-meet-stats
-Jitsi Meet stats to Graphite exporter
+Jitsi Meet stats to Graphite exporter + sample Grafana dashboards
 
 ## Introduction
 Jitsi (Videobridge) provides a lot of useful [statistics](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/statistics.md).  
@@ -27,7 +27,9 @@ PICKLE_RECEIVER_PORT = 2004
 ```
   
 * If you want to use provided dashboard you'll also need **Grafana**  
-  with **the Graphite** configured as data source
+  with **the Graphite** configured as data source  
+  
+Graphite and Grafana installation is out of scope for this document.
   
 ### (1/3) enabling Videobrige statistics reporting
 
@@ -76,7 +78,8 @@ SLEEP_SEC = 5
 ```
 
 The **CARBON_SERVER** defines your graphite server.  
-If you change **GRAPHITE_PREFIX** you'll have to update provided grafana dashboard as well.  
+If you change **GRAPHITE_PREFIX** you'll have to update provided grafana dashboards as well  
+(dashboard variables).    
 Once finished - execute the jmstats.py script and see if it's working.
 
 ```
@@ -86,13 +89,20 @@ systemctl start jmstats
 systemctl enable jmstats
 ```
 
-### (3/3) import grafana dashboard
+One last thing:  
+in our configuration Jitsi exports statistics every 5 seconds (as per **sip-communicator.properties**),  
+every 5 seconds as well **jmstats.py** (**SLEEP_SEC** variable) sends them Graphite.  
+Remember to update Graphite retention accordingly (**storage-schemas.conf**), for example:  
+> retentions = 5s:1h,1m:24h,5m:7d,1h:365d  
 
-Log in **as admin** to your Grafana and import the **jitsi-stats-dashboard.json** file.  
+
+### (3/3) import sample grafana dashboards
+
+Log in **as admin** to your Grafana and import the dashboard **json** files.  
   
-Provided dashboard file was exported from **Grafana 6.7.1** with **Graphite** configured  
+Provided files were exported from **Grafana 6.7.1** with **Graphite** configured  
 as a data source named '**graphite**'. If you're having problems importing the  
-dashboard you may want to try to edit the json file manually - to change for example  
+dashboards you may want to try to edit the json files manually - to change for example  
 required Grafana version.
 
 
