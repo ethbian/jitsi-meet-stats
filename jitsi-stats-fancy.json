@@ -66,7 +66,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1587676956065,
+  "iteration": 1587935808879,
   "links": [],
   "panels": [
     {
@@ -294,8 +294,8 @@
       "colorValue": true,
       "colors": [
         "rgb(85, 194, 58)",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
+        "#E0B400",
+        "#E02F44"
       ],
       "datasource": "${DS_GRAPHITE}",
       "format": "ms",
@@ -357,7 +357,7 @@
           "target": "$graphite_prefix.$jvbHost.jitter_aggregate"
         }
       ],
-      "thresholds": "",
+      "thresholds": "50,100",
       "timeFrom": null,
       "timeShift": null,
       "title": "Jitter",
@@ -614,7 +614,7 @@
           "target": "$graphite_prefix.$jvbHost.loss_rate_download"
         }
       ],
-      "thresholds": "",
+      "thresholds": "0,01",
       "timeFrom": null,
       "timeShift": null,
       "title": "Loss rate",
@@ -716,9 +716,6 @@
       "valueName": "current"
     },
     {
-      "aliasColors": {
-        "metrics.jitsi.videokonfer.cpu_usage": "semi-dark-green"
-      },
       "bars": false,
       "cacheTimeout": null,
       "dashLength": 10,
@@ -761,7 +758,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "$graphite_prefix.$jvbHost.cpu_usage"
+          "target": "$graphite_prefix.$jvbHost.custom_cpu_usage"
         }
       ],
       "thresholds": [],
@@ -786,7 +783,7 @@
         {
           "$$hashKey": "object:2523",
           "decimals": 2,
-          "format": "percentunit",
+          "format": "percent",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -809,9 +806,6 @@
       }
     },
     {
-      "aliasColors": {
-        "metrics.jitsi.videokonfer.used_memory": "semi-dark-green"
-      },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
@@ -852,7 +846,7 @@
       "targets": [
         {
           "refId": "A",
-          "target": "$graphite_prefix.$jvbHost.used_memory"
+          "target": "$graphite_prefix.$jvbHost.custom_mem_usage"
         }
       ],
       "thresholds": [],
@@ -877,7 +871,7 @@
         {
           "$$hashKey": "object:3188",
           "decimals": null,
-          "format": "decmbytes",
+          "format": "percent",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -900,10 +894,6 @@
       }
     },
     {
-      "aliasColors": {
-        "metrics.jitsi.videokonfer.bit_rate_download": "semi-dark-green",
-        "metrics.jitsi.videokonfer.bit_rate_upload": "light-green"
-      },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
@@ -925,7 +915,7 @@
         "max": false,
         "min": false,
         "rightSide": false,
-        "show": true,
+        "show": false,
         "total": false,
         "values": false
       },
@@ -981,7 +971,7 @@
           "logBase": 1,
           "max": null,
           "min": "0",
-          "show": false
+          "show": true
         },
         {
           "$$hashKey": "object:1356",
@@ -999,9 +989,6 @@
       }
     },
     {
-      "aliasColors": {
-        "metrics.jitsi.videokonfer.jitter_aggregate": "dark-blue"
-      },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
@@ -1109,11 +1096,6 @@
       }
     },
     {
-      "aliasColors": {
-        "metrics.jitsi.videokonfer.jitter_aggregate": "dark-blue",
-        "metrics.jitsi.videokonfer.loss_rate_download": "dark-blue",
-        "metrics.jitsi.videokonfer.loss_rate_upload": "semi-dark-blue"
-      },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
@@ -1218,12 +1200,6 @@
       }
     },
     {
-      "aliasColors": {
-        "metrics.jitsi.videokonfer.jitter_aggregate": "dark-blue",
-        "metrics.jitsi.videokonfer.loss_rate_download": "dark-blue",
-        "metrics.jitsi.videokonfer.loss_rate_upload": "semi-dark-blue",
-        "metrics.jitsi.videokonfer.rtt_aggregate": "dark-blue"
-      },
       "bars": false,
       "dashLength": 10,
       "dashes": false,
@@ -1323,9 +1299,6 @@
       }
     },
     {
-      "aliasColors": {
-        "metrics.jitsi.videokonfer.conferences": "semi-dark-red"
-      },
       "bars": true,
       "dashLength": 10,
       "dashes": false,
@@ -1345,7 +1318,7 @@
         "current": false,
         "max": false,
         "min": false,
-        "show": true,
+        "show": false,
         "total": false,
         "values": false
       },
@@ -1415,10 +1388,6 @@
       }
     },
     {
-      "aliasColors": {
-        "metrics.jitsi.videokonfer.conferences": "semi-dark-red",
-        "metrics.jitsi.videokonfer.participants": "light-red"
-      },
       "bars": true,
       "dashLength": 10,
       "dashes": false,
@@ -1438,7 +1407,7 @@
         "current": false,
         "max": false,
         "min": false,
-        "show": true,
+        "show": false,
         "total": false,
         "values": false
       },
@@ -1508,7 +1477,7 @@
       }
     }
   ],
-  "refresh": false,
+  "refresh": "5s",
   "schemaVersion": 22,
   "style": "dark",
   "tags": [],
@@ -1577,9 +1546,9 @@
   },
   "timezone": "",
   "title": "jitsi-stats-fancy",
-  "uid": "JyMDXLqZz",
+  "uid": "JyMDXLqZa",
   "variables": {
     "list": []
   },
-  "version": 16
+  "version": 5
 }

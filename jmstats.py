@@ -6,6 +6,7 @@
 # https://github.com/ethbian/jitsi-meet-stats
 
 import requests
+import psutil
 import json
 import time
 import pickle
@@ -17,10 +18,12 @@ import logging
 CARBON_SERVER = 'graphite.example.com'
 GRAPHITE_PREFIX = 'metrics.jitsi.{}'.format(socket.gethostname())
 LOG_FILE = '/var/log/jitsi/jmstats.log'
-SKIP_METRICS = ['current_timestamp', 'conference_sizes']
+SKIP_METRICS = ['current_timestamp', 'conference_sizes', 'conferences_by_audio_senders', 'conferences_by_video_senders']
 JITSI_STATS = 'http://localhost:8080/colibri/stats'
 CARBON_PICKLE_PORT = 2004
 SLEEP_SEC = 5
+METRIC_CUSTOM_CPU_USAGE = u'custom_cpu_usage'
+METRIC_CUSTOM_MEM_USAGE = u'custom_mem_usage'
 
 
 def get_stats():
@@ -37,6 +40,9 @@ def get_stats():
         except Exception as ex:
             logging.error('Error converting json to dict: {}'.format(ex))
             err = True
+    if not err:
+        result[METRIC_CUSTOM_CPU_USAGE] = procmem.cpu_percent()
+        result[METRIC_CUSTOM_MEM_USAGE] = psutil.virtual_memory()[2]
     return err, result
 
 
@@ -58,6 +64,7 @@ logging.basicConfig(filename=LOG_FILE, filemode='a', level=logging.INFO)
 logging.getLogger().addHandler(logging.StreamHandler())
 clientSocket = socket.socket()
 clientSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+procmem = psutil.Process()
 try:
     clientSocket.connect((CARBON_SERVER, CARBON_PICKLE_PORT))
 except Exception as ex:

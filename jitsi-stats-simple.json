@@ -54,7 +54,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1587676914076,
+  "iteration": 1587935753076,
   "links": [],
   "panels": [
     {
@@ -416,12 +416,12 @@
         "thresholdMarkers": true
       },
       "gridPos": {
-        "h": 3,
+        "h": 6,
         "w": 3,
         "x": 12,
         "y": 0
       },
-      "id": 6,
+      "id": 7,
       "interval": null,
       "links": [],
       "mappingType": 1,
@@ -463,13 +463,13 @@
       "targets": [
         {
           "refId": "A",
-          "target": "$graphite_prefix.$jvbHost.audiochannels"
+          "target": "$graphite_prefix.$jvbHost.videochannels"
         }
       ],
       "thresholds": "",
       "timeFrom": null,
       "timeShift": null,
-      "title": "Audiochannels",
+      "title": "Videochannels",
       "type": "singlestat",
       "valueFontSize": "100%",
       "valueMaps": [
@@ -641,91 +641,6 @@
       "timeFrom": null,
       "timeShift": null,
       "title": "Total conferences completed",
-      "type": "singlestat",
-      "valueFontSize": "100%",
-      "valueMaps": [
-        {
-          "$$hashKey": "object:177",
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
-      "valueName": "current"
-    },
-    {
-      "cacheTimeout": null,
-      "colorBackground": false,
-      "colorValue": true,
-      "colors": [
-        "#1F60C4",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
-      ],
-      "datasource": "${DS_GRAPHITE}",
-      "format": "none",
-      "gauge": {
-        "maxValue": 100,
-        "minValue": 0,
-        "show": false,
-        "thresholdLabels": false,
-        "thresholdMarkers": true
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 3,
-        "x": 12,
-        "y": 3
-      },
-      "id": 7,
-      "interval": null,
-      "links": [],
-      "mappingType": 1,
-      "mappingTypes": [
-        {
-          "$$hashKey": "object:174",
-          "name": "value to text",
-          "value": 1
-        },
-        {
-          "$$hashKey": "object:175",
-          "name": "range to text",
-          "value": 2
-        }
-      ],
-      "maxDataPoints": 100,
-      "nullPointMode": "connected",
-      "nullText": null,
-      "postfix": "",
-      "postfixFontSize": "50%",
-      "prefix": "",
-      "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
-      "sparkline": {
-        "fillColor": "rgba(31, 118, 189, 0.18)",
-        "full": false,
-        "lineColor": "rgb(31, 120, 193)",
-        "show": false,
-        "ymax": null,
-        "ymin": null
-      },
-      "tableColumn": "",
-      "targets": [
-        {
-          "refId": "A",
-          "target": "$graphite_prefix.$jvbHost.videochannels"
-        }
-      ],
-      "thresholds": "",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "Videochannels",
       "type": "singlestat",
       "valueFontSize": "100%",
       "valueMaps": [
@@ -915,7 +830,7 @@
       "colorValue": true,
       "colors": [
         "rgb(85, 194, 58)",
-        "rgba(237, 129, 40, 0.89)",
+        "#F2CC0C",
         "#d44a3a"
       ],
       "datasource": "${DS_GRAPHITE}",
@@ -978,7 +893,7 @@
           "target": "$graphite_prefix.$jvbHost.jitter_aggregate"
         }
       ],
-      "thresholds": "",
+      "thresholds": "50,100",
       "timeFrom": null,
       "timeShift": null,
       "title": "Jitter",
@@ -1064,7 +979,7 @@
           "target": "$graphite_prefix.$jvbHost.loss_rate_download"
         }
       ],
-      "thresholds": "",
+      "thresholds": "0.01",
       "timeFrom": null,
       "timeShift": null,
       "title": "Loss rate",
@@ -1171,12 +1086,12 @@
       "colorValue": true,
       "colors": [
         "rgb(65, 133, 124)",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
+        "#E0B400",
+        "#E02F44"
       ],
       "datasource": "${DS_GRAPHITE}",
       "decimals": 0,
-      "format": "percentunit",
+      "format": "percent",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -1232,10 +1147,10 @@
       "targets": [
         {
           "refId": "A",
-          "target": "$graphite_prefix.$jvbHost.cpu_usage"
+          "target": "$graphite_prefix.$jvbHost.custom_cpu_usage"
         }
       ],
-      "thresholds": "",
+      "thresholds": "80, 95",
       "timeFrom": null,
       "timeShift": null,
       "title": "CPU usage",
@@ -1257,12 +1172,12 @@
       "colorValue": true,
       "colors": [
         "rgb(65, 133, 124)",
-        "rgba(237, 129, 40, 0.89)",
-        "#d44a3a"
+        "#E0B400",
+        "#E02F44"
       ],
       "datasource": "${DS_GRAPHITE}",
       "decimals": 0,
-      "format": "decmbytes",
+      "format": "percent",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -1318,10 +1233,10 @@
       "targets": [
         {
           "refId": "A",
-          "target": "$graphite_prefix.$jvbHost.used_memory"
+          "target": "$graphite_prefix.$jvbHost.custom_mem_usage"
         }
       ],
-      "thresholds": "",
+      "thresholds": "80,95",
       "timeFrom": null,
       "timeShift": null,
       "title": "RAM usage",
@@ -1497,5 +1412,5 @@
   "variables": {
     "list": []
   },
-  "version": 24
+  "version": 29
 }

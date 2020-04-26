@@ -7,15 +7,18 @@ Graphite can be used to store them, Grafana to show them in a cool way.
 
 ## Installation
 
-Created and tested on Ubuntu 18 with Python 2.7, Grafana 6.7.1 with Graphite as a data source  
+Created and tested on Ubuntu 18 with Python 2.7, Grafana 6.7.1 with Graphite as a data source.  
+Working with Videobridge and Videobridge2.
+
 > Jitsi Videobridge --> Colibri stats --> jmstats --> Graphite --> Grafana
 
 ### (0/3) requirements
 
-* Python **requests** module needs to be installed:
+* Python **requests** and **psutil** modules need to be installed:
 
 ```
 apt-get install python-requests
+apt-get install python-psutil
 ```
 
 * Jitsi statistics are sent to and stored by **Graphite**  
@@ -26,21 +29,34 @@ PICKLE_RECEIVER_INTERFACE = 0.0.0.0
 PICKLE_RECEIVER_PORT = 2004
 ```
   
-* If you want to use provided dashboard you'll also need **Grafana**  
+* If you want to use provided dashboards you'll also need **Grafana**  
   with **the Graphite** configured as data source  
   
-Graphite and Grafana installation is out of scope for this document.
+Graphite and Grafana installation is out of scope for this document.  
+  
+Note: looks like cpu_usage and used_memory metrics have been removed from the stats  
+in the latest version. What a pity. So we're using python's psutil module to report additionaly:  
+**custom_cpu_usage**: current system-wide CPU utilization as a percentage (0-100)  
+**custom_mem_usage**: physical memory usage as a percentage (0-100)
   
 ### (1/3) enabling Videobrige statistics reporting
 
 In the **/etc/jitsi/videobridge/** directory two files need to be updated.  
 
 **config** file - replace the empty JVB_OPTS with the following:  
-
+  
+**(a) videobridge:** 
 ```
 # extra options to pass to the JVB daemon
-#JVB_OPTS=""
+# JVB_OPTS=""
 JVB_OPTS="--apis=rest,xmpp"
+```
+
+**(b) videobridge2:**
+```
+# extra options to pass to the JVB daemon
+# JVB_OPTS="--apis=,"
+JVB_OPTS="--apis=rest"
 ```
 
 **sip-communicator.properties** file - add the following lines:
@@ -79,8 +95,7 @@ SLEEP_SEC = 5
 
 The **CARBON_SERVER** defines your graphite server.  
 If you change **GRAPHITE_PREFIX** you'll have to update provided grafana dashboards as well  
-(dashboard variables).    
-Once finished - execute the jmstats.py script and see if it's working.
+(dashboard variables). Once finished - execute the jmstats.py script and see if it's working.
 
 ```
 cp jmstats.py /usr/local/bin/
