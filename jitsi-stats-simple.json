@@ -54,7 +54,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1587935753076,
+  "iteration": 1588005582147,
   "links": [],
   "panels": [
     {
@@ -492,7 +492,7 @@
         "#d44a3a"
       ],
       "datasource": "${DS_GRAPHITE}",
-      "decimals": 1,
+      "decimals": 0,
       "format": "Kbits",
       "gauge": {
         "maxValue": 100,
@@ -663,7 +663,7 @@
         "#d44a3a"
       ],
       "datasource": "${DS_GRAPHITE}",
-      "decimals": 1,
+      "decimals": 0,
       "format": "Kbits",
       "gauge": {
         "maxValue": 100,
@@ -749,6 +749,7 @@
         "#d44a3a"
       ],
       "datasource": "${DS_GRAPHITE}",
+      "decimals": 1,
       "format": "s",
       "gauge": {
         "maxValue": 100,
@@ -1090,7 +1091,7 @@
         "#E02F44"
       ],
       "datasource": "${DS_GRAPHITE}",
-      "decimals": 0,
+      "decimals": 1,
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -1176,7 +1177,7 @@
         "#E02F44"
       ],
       "datasource": "${DS_GRAPHITE}",
-      "decimals": 0,
+      "decimals": 1,
       "format": "percent",
       "gauge": {
         "maxValue": 100,
@@ -1412,5 +1413,5 @@
   "variables": {
     "list": []
   },
-  "version": 29
+  "version": 33
 }

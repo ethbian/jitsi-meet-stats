@@ -66,7 +66,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
-  "iteration": 1587935808879,
+  "iteration": 1588005559600,
   "links": [],
   "panels": [
     {
@@ -782,7 +782,7 @@
       "yaxes": [
         {
           "$$hashKey": "object:2523",
-          "decimals": 2,
+          "decimals": 0,
           "format": "percent",
           "label": null,
           "logBase": 1,
@@ -870,7 +870,7 @@
       "yaxes": [
         {
           "$$hashKey": "object:3188",
-          "decimals": null,
+          "decimals": 0,
           "format": "percent",
           "label": null,
           "logBase": 1,
@@ -1550,5 +1550,5 @@
   "variables": {
     "list": []
   },
-  "version": 5
+  "version": 6
 }
