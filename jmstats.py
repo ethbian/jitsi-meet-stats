@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
-# Jitsi Meet to Graphite exporter
+# Jitsi Meet stats to Graphite exporter
 # version 0.1
-# for latest version, howto, sample grafana dashboards visit
+# for the latest version, howto, sample grafana dashboards visit
 # https://github.com/ethbian/jitsi-meet-stats
 
 import requests

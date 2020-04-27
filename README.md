@@ -96,6 +96,16 @@ SLEEP_SEC = 5
 The **CARBON_SERVER** defines your graphite server.  
 If you change **GRAPHITE_PREFIX** you'll have to update provided grafana dashboards as well  
 (dashboard variables). Once finished - execute the jmstats.py script and see if it's working.
+  
+If you're not using jitsi-videobridge2 update the jmstats.service and replace this line:
+
+> After=jitsi-videobridge2.service  
+
+with this line:  
+
+> After=jitsi-videobridge.service  
+
+OK, you're ready to go:
 
 ```
 cp jmstats.py /usr/local/bin/
