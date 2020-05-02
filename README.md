@@ -1,5 +1,7 @@
 # jitsi-meet-stats
-Jitsi Meet stats to Graphite exporter + sample Grafana dashboards
+Jitsi Meet stats to Graphite exporter + sample Grafana dashboards: 
+[simple](https://ethbian.org/images/jitsi/jitsi-stats-simple.png) and 
+[fancy](https://ethbian.org/images/jitsi/jitsi-stats-fancy.png)  
 
 ## Introduction
 Jitsi (Videobridge) provides a lot of useful [statistics](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/statistics.md).  
